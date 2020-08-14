@@ -7,13 +7,13 @@
     app:startDestination="@id/get_followers_fragment">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_search_results"
         android:name="com.example.githubfollowers.ui.searchResults.SearchResultsFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_search_results" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_favorites"
         android:name="com.example.githubfollowers.ui.favorites.FavoritesFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_favorites" />
@@ -29,6 +29,6 @@
         android:label="Get Followers">
         <action
             android:id="@+id/action_get_followers_fragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            app:destination="@id/navigation_search_results" />
     </fragment>
 </navigation>

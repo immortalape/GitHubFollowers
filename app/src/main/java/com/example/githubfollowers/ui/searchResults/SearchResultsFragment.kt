@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubfollowers.R
 import com.example.githubfollowers.model.Followers
@@ -34,7 +35,7 @@ class SearchResultsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeScreenRecyclerView.layoutManager = LinearLayoutManager(context)
+        homeScreenRecyclerView.layoutManager = GridLayoutManager(context, 2)
         homeScreenRecyclerView.adapter = adapter
 
 

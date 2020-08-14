@@ -7,13 +7,7 @@
         android:title="Search" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_favorites"
         android:icon="@android:drawable/star_big_off"
         android:title="Favorites" />
-
-    <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/avatar_placeholder_dark"
-        android:title="Profile" />
-
 </menu>
