@@ -12,5 +12,5 @@ interface GitHubApi {
     fun getFollowerData(@Path("user") user : String) : Call<List<Followers>>
 
     @GET ("users/{user}")
-    fun gwtUserData(@Path("user") user: String) : Call<List<User>>
+    fun getUserData(@Path("user") user: String) : Call<List<User>>
 }

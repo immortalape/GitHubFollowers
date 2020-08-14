@@ -1,18 +1,18 @@
 package com.example.githubfollowers.model
 
 data class User (
-	val avatarUrl: String? = null,
-	val login: String? = null,
-	val email: Any? = null,
-	val followers: Int? = null,
-	val following: Int? = null,
-	val followersUrl: String? = null,
-	val followingUrl: String? = null,
-	val bio: String? = null,
-	val createdAt: String? = null,
-	val gistsUrl: String? = null,
-	val reposUrl: String? = null,
-	val publicGists: Int? = null,
-	val publicRepos: Int? = null
+	val avatarUrl: String,
+	val login: String,
+	val email: String,
+	val followers: Int,
+	val following: Int,
+	val followersUrl: String,
+	val followingUrl: String,
+	val bio: String,
+	val createdAt: String,
+	val gistsUrl: String,
+	val reposUrl: String,
+	val publicGists: Int,
+	val publicRepos: Int
 )
 

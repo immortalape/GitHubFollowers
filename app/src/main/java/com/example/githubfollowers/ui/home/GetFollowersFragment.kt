@@ -1,4 +1,4 @@
-package com.example.githubfollowers.ui.follower
+package com.example.githubfollowers.ui.home
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.githubfollowers.R
 import com.example.githubfollowers.ui.searchResults.SearchResultsFragment
-import com.example.githubfollowers.ui.searchResults.SharedViewModel
+import com.example.githubfollowers.ui.SharedViewModel
 import kotlinx.android.synthetic.main.get_followers_fragment.*
 
 

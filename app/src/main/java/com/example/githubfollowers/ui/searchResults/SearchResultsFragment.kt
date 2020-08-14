@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubfollowers.R
 import com.example.githubfollowers.model.Followers
+import com.example.githubfollowers.ui.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_search_results.*
 
 

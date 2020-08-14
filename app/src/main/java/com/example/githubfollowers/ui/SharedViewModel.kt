@@ -1,4 +1,4 @@
-package com.example.githubfollowers.ui.searchResults
+package com.example.githubfollowers.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,6 +17,6 @@ class SharedViewModel : ViewModel() {
     }
 
     fun getFollowersData(user : String): LiveData<List<Followers>> {
-        return repository.getUser(user)
+        return repository.getFollowersData(user)
     }
 }
