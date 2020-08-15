@@ -11,17 +11,24 @@ import com.example.githubfollowers.model.Followers
 import com.squareup.picasso.Picasso
 
 
-class SearchResultsFragmentAdapter(val context: SearchResultsFragment, private val followers: MutableList<Followers>) : RecyclerView.Adapter<SearchResultsFragmentAdapter.ViewHolder>() {
+class SearchResultsFragmentAdapter(
+    val context: SearchResultsFragment,
+    private val followers: MutableList<Followers>,
+    val itemClickListener : ItemClicked
+) : RecyclerView.Adapter<SearchResultsFragmentAdapter.ViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.followers_list, parent, false)
-        return ViewHolder(view)
+        return ViewHolder (LayoutInflater.from(parent.context).inflate(R.layout.followers_list, parent, false))
     }
 
     override fun getItemCount() = followers.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(followers[position])
+        holder.itemView.setOnClickListener{
+            itemClickListener.onItemClicked(followers[position])
+        }
     }
 
 
@@ -39,8 +46,15 @@ class SearchResultsFragmentAdapter(val context: SearchResultsFragment, private v
         }
     }
 
+
     fun updateFollowersList(followers: List<Followers>){
         this.followers.addAll(followers)
         notifyDataSetChanged()
     }
+
+    interface ItemClicked {
+        fun onItemClicked(followers: Followers)
+    }
+
+
 }

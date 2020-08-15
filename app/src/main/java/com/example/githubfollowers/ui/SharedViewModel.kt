@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.githubfollowers.api.Repository
 import com.example.githubfollowers.model.Followers
+import com.example.githubfollowers.model.User
 
 class SharedViewModel : ViewModel() {
 
@@ -18,5 +19,9 @@ class SharedViewModel : ViewModel() {
 
     fun getFollowersData(user : String): LiveData<List<Followers>> {
         return repository.getFollowersData(user)
+    }
+
+    fun getUserData(user: String) : LiveData<List<User>>{
+        return repository.getUserData(user)
     }
 }
