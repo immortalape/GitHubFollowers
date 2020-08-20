@@ -11,11 +11,11 @@ import com.example.githubfollowers.model.Followers
 import com.squareup.picasso.Picasso
 
 
-class SearchResultsFragmentAdapter(
+class SearchResultsAdapter(
     val context: SearchResultsFragment,
     private val followers: MutableList<Followers>,
-    val itemClickListener : ItemClicked
-) : RecyclerView.Adapter<SearchResultsFragmentAdapter.ViewHolder>() {
+    private val itemClickListener : ItemClicked
+) : RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

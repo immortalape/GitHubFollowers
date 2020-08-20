@@ -31,10 +31,10 @@ class GetFollowersFragment : Fragment() {
         get_followers_button.setOnClickListener {
             viewModel.userName = search_user_edit_text.text.toString()
 
-            val homeFragment = SearchResultsFragment()
+            val searchResultsFragment = SearchResultsFragment()
             val fragmentTransaction = fragmentManager?.beginTransaction()
 
-            fragmentTransaction?.replace(R.id.nav_host_fragment, homeFragment)
+            fragmentTransaction?.replace(R.id.nav_host_fragment, searchResultsFragment)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
         }

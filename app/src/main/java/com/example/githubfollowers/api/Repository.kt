@@ -1,5 +1,7 @@
 package com.example.githubfollowers.api
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.githubfollowers.model.Followers
@@ -24,25 +26,23 @@ object Repository  {
             }
 
             override fun onFailure(call: Call<List<Followers>>, t: Throwable) {
-                //Handle the throwable
+                println("${t.message}")
             }
         })
         return liveData
     }
 
-    fun getUserData(user: String) : MutableLiveData<List<User>> {
-        val userLiveData = MutableLiveData<List<User>>()
+    fun getUserData(user: String) : LiveData<User> {
 
-        api.getUserData(user).enqueue(object : Callback<List<User>> {
-            override fun onResponse(
-                call: Call<List<User>>,
-                response: Response<List<User>>
-            ) {
+        val userLiveData = MutableLiveData<User>()
+
+        api.getUserData(user).enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
                 userLiveData.value = response.body()
             }
 
-            override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                //Handle throwable
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                println("${t.message}")
             }
         })
         return userLiveData
