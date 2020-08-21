@@ -1,12 +1,13 @@
 package com.example.githubfollowers.ui.profile
 
-import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -48,16 +49,18 @@ class ProfileFragment : Fragment() {
 
 
     private fun bind(user: User) {
-
         val profileAvatar: ImageView =
             requireView().findViewById(R.id.profile_screen_image_view)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            profileAvatar.clipToOutline = true
+        }
         Picasso.get().load(user.avatar_url).into(profileAvatar)
 
         profile_screen_username_text_view.text = user.login
         profile_screen_bio_text_view.text = user.bio
-        profile_screen_public_gits_text_view.text = user.public_gists.toString()
-        profile_screen_public_repos_text_view.text = user.public_repos.toString()
-        profile_screen_followers_text_view.text = user.followers.toString()
-        profile_screen_following_text_view.text = user.following.toString()
+        profile_screen_public_gists_text_view.text = getString(R.string.public_gists, user.public_gists)
+        profile_screen_public_repos_text_view.text = getString(R.string.public_repos, user.public_repos)
+        profile_screen_followers_text_view.text = getString(R.string.followers, user.followers)
+        profile_screen_following_text_view.text = getString(R.string.following, user.following)
     }
 }

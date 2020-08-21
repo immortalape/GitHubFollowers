@@ -39,9 +39,13 @@ class SearchResultsAdapter(
         private val followerImageView : ImageView = view.findViewById(R.id.userImageView)
         private val followersLogin: TextView = view.findViewById(R.id.userNameTextView)
 
+
         fun bind(followers: Followers){
             this.followers = followers
             followersLogin.text = followers.login
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                followerImageView.clipToOutline = true
+            }
             Picasso.get().load(followers.avatar_url).into(followerImageView)
         }
     }

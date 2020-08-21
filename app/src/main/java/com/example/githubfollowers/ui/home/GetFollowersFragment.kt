@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
 import com.example.githubfollowers.R
 import com.example.githubfollowers.ui.searchResults.SearchResultsFragment
 import com.example.githubfollowers.ui.SharedViewModel
@@ -29,17 +31,19 @@ class GetFollowersFragment : Fragment() {
 
 
         get_followers_button.setOnClickListener {
-            viewModel.userName = search_user_edit_text.text.toString()
 
-            val searchResultsFragment = SearchResultsFragment()
-            val fragmentTransaction = fragmentManager?.beginTransaction()
+            if (search_user_edit_text.text.isEmpty()){
+                Toast.makeText(context, "Please enter a username!", Toast.LENGTH_SHORT).show()
+            }else {
+                viewModel.userName = search_user_edit_text.text.toString()
+                val searchResultsFragment = SearchResultsFragment()
+                val fragmentTransaction = fragmentManager?.beginTransaction()
 
-            fragmentTransaction?.replace(R.id.nav_host_fragment, searchResultsFragment)
-            fragmentTransaction?.addToBackStack(null)
-            fragmentTransaction?.commit()
+                fragmentTransaction?.replace(R.id.nav_host_fragment, searchResultsFragment)
+                fragmentTransaction?.addToBackStack(null)
+                fragmentTransaction?.commit()
+            }
         }
-
-
     }
 
 

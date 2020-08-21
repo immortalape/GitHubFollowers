@@ -3,59 +3,64 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_corners_for_image_view">
 
     <ImageView
         android:id="@+id/profile_screen_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
         android:layout_marginTop="45dp"
+        android:background="@drawable/rounded_corners_for_image_view"
         android:contentDescription="user pic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="373dp"
+        android:layout_height="188dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_screen_image_view"
+        app:srcCompat="@drawable/bubble" />
+
     <TextView
         android:id="@+id/profile_screen_bio_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="24dp"
         android:text="No Bio Available"
-        app:layout_constraintStart_toStartOf="@+id/profile_screen_image_view"
-        app:layout_constraintTop_toBottomOf="@+id/profile_screen_image_view" />
+        app:layout_constraintStart_toStartOf="@+id/profile_screen_location_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/profile_screen_location_text_view" />
 
     <TextView
         android:id="@+id/profile_screen_location_text_view"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_screen_image_view"
         app:layout_constraintEnd_toEndOf="@+id/profile_screen_name_text_view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/profile_screen_name_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/profile_screen_name_text_view"
         tools:text="location" />
 
     <TextView
         android:id="@+id/profile_screen_name_text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/profile_screen_location_text_view"
         app:layout_constraintEnd_toEndOf="@+id/profile_screen_username_text_view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/profile_screen_username_text_view"
         app:layout_constraintTop_toBottomOf="@+id/profile_screen_username_text_view"
-        app:layout_constraintVertical_bias="0.08"
         tools:text="name surname" />
 
     <TextView
         android:id="@+id/profile_screen_username_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -66,90 +71,82 @@
         tools:text="username" />
 
     <TextView
+        android:id="@+id/profile_screen_public_gists_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/public_gists"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_screen_public_repos_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/profile_screen_public_repos_text_view" />
+
+    <TextView
         android:id="@+id/profile_screen_public_repos_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginLeft="70dp"
-        android:text="Public Repos"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_screen_public_gits_text_view"
+        android:layout_marginTop="55dp"
+        android:text="@string/public_repos"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/profile_screen_public_gists_text_view"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/profile_screen_public_gits_text_view" />
-
-    <TextView
-        android:id="@+id/profile_screen_public_gits_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="70dp"
-        android:layout_marginRight="70dp"
-        android:layout_marginBottom="40dp"
-        android:text="Public Gists"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/profile_screen_github_profile_button"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/profile_screen_followers_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginBottom="40dp"
-        android:text="Followes"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/profile_screen_get_followers_button"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/profile_screen_following_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginRight="70dp"
-        android:text="Following"
-        android:textColor="@android:color/black"
+        android:text="@string/following"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/profile_screen_followers_text_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_screen_github_profile_button" />
+        app:layout_constraintStart_toEndOf="@+id/profile_screen_followers_text_view" />
 
-    <Button
-        android:id="@+id/profile_screen_github_profile_button"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/profile_screen_followers_text_view"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="80dp"
-        android:text="PROFILE"
-        app:layout_constraintBottom_toTopOf="@+id/profile_screen_followers_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="32dp"
+        android:text="@string/followers"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/profile_screen_following_text_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_screen_public_repos_text_view" />
 
     <Button
         android:id="@+id/profile_screen_get_followers_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="32dp"
+        android:background="@drawable/rounded_corners"
         android:text="GET FOLLOWERS"
-        app:layout_constraintBottom_toTopOf="@+id/profile_screen_github_since_text_view"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/profile_screen_github_since_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_screen_get_followers_button"
         tools:text="GitHub since Dec 2019" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

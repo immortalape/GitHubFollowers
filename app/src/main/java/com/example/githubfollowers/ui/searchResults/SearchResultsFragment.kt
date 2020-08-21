@@ -40,16 +40,19 @@ class SearchResultsFragment : Fragment(), SearchResultsAdapter.ItemClicked {
         homeScreenRecyclerView.layoutManager = GridLayoutManager(context, 2)
         homeScreenRecyclerView.adapter = adapter
 
-
-        sharedViewModel.getFollowersData(sharedViewModel.userName).observe(viewLifecycleOwner, Observer<List<Followers>>
-        { response ->
-            if(response!=null){
-                adapter.updateFollowersList(response)
-                Toast.makeText(context, "Successfully retrieved data!", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
-            }
-        })
+        if (adapter.itemCount == 0) {
+            sharedViewModel.getFollowersData(sharedViewModel.userName).observe(viewLifecycleOwner, Observer<List<Followers>>
+            { response ->
+                if(response!=null){
+                    adapter.updateFollowersList(response)
+                    Toast.makeText(context, "Successfully retrieved data!", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }else{
+            Toast.makeText(context, "Data already retrieved!", Toast.LENGTH_SHORT).show()
+        }
 
     }
 
