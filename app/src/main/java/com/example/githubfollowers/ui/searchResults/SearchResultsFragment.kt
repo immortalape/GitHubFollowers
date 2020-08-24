@@ -53,25 +53,13 @@ class SearchResultsFragment : Fragment(), SearchResultsAdapter.ItemClicked {
         }else{
             Toast.makeText(context, "Data already retrieved!", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     override fun onItemClicked(followers: Followers) {
-
-        val profileFragment = ProfileFragment()
+        val profileFragment = ProfileFragment(followers.login)
         val fragmentTransaction = parentFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.nav_host_fragment, profileFragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
-
-//
-//        val bundle = Bundle()
-//        bundle.putString("CLICKED_USER_NAME", followers.login)
-//        profileFragment.arguments = bundle
-
-//        val clicked = bundle.getString("CLICKED_USER_NAME")
-//        println(clicked)
-
-//        sharedViewModel.followerLogin = followers.login
     }
 }

@@ -6,6 +6,23 @@
     android:layout_height="match_parent"
     android:background="@drawable/rounded_corners_for_image_view">
 
+    <Button
+        android:id="@+id/profile_screen_add_to_favorites_button"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/rounded_corners_alt"
+        android:text="ADD TO MY FAVORITES"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
     <ImageView
         android:id="@+id/profile_screen_image_view"
         android:layout_width="150dp"
@@ -21,51 +38,50 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="373dp"
-        android:layout_height="188dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="348dp"
+        android:layout_height="141dp"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/bubble_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_screen_image_view"
-        app:srcCompat="@drawable/bubble" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_screen_image_view" />
 
     <TextView
         android:id="@+id/profile_screen_bio_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="No Bio Available"
-        app:layout_constraintStart_toStartOf="@+id/profile_screen_location_text_view"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profile_screen_image_view"
         app:layout_constraintTop_toBottomOf="@+id/profile_screen_location_text_view" />
 
     <TextView
         android:id="@+id/profile_screen_location_text_view"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="@+id/profile_screen_name_text_view"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/profile_screen_name_text_view"
-        app:layout_constraintTop_toBottomOf="@+id/profile_screen_name_text_view"
-        tools:text="location" />
-
-    <TextView
-        android:id="@+id/profile_screen_name_text_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/profile_screen_username_text_view"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:text="Location is not available"
         app:layout_constraintStart_toStartOf="@+id/profile_screen_username_text_view"
         app:layout_constraintTop_toBottomOf="@+id/profile_screen_username_text_view"
-        tools:text="name surname" />
+        tools:text="location" />
 
     <TextView
         android:id="@+id/profile_screen_username_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toEndOf="@+id/profile_screen_image_view"
         app:layout_constraintTop_toTopOf="@+id/profile_screen_image_view"
         tools:text="username" />
@@ -87,7 +103,7 @@
         android:id="@+id/profile_screen_public_repos_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="32dp"
         android:text="@string/public_repos"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
@@ -128,25 +144,26 @@
         android:layout_height="60dp"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         android:background="@drawable/rounded_corners"
         android:text="GET FOLLOWERS"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/profile_screen_github_since_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_screen_add_to_favorites_button" />
 
     <TextView
         android:id="@+id/profile_screen_github_since_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_screen_get_followers_button"
         tools:text="GitHub since Dec 2019" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,16 +12,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.githubfollowers.R
+import com.example.githubfollowers.model.Followers
 import com.example.githubfollowers.model.User
 import com.example.githubfollowers.ui.SharedViewModel
+import com.example.githubfollowers.ui.searchResults.SearchResultsFragment
+import com.example.githubfollowers.utils.DataService
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.*
 
-class ProfileFragment : Fragment() {
+class ProfileFragment(private val login: String) : Fragment() {
 
     private lateinit var sharedViewModel: SharedViewModel
-    private val bundle = this.arguments?.getString("CLICKED_USER_NAME")
-
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -36,15 +37,22 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedViewModel.getUserData("octocat").observe(viewLifecycleOwner, Observer<User>
+        sharedViewModel.getUserData(login).observe(viewLifecycleOwner, Observer<User>
         { response ->
             if (response!=null) {
                 bind(response)
+                profile_screen_add_to_favorites_button.setOnClickListener {
+                    addToFavorites(response)
+                }
             }else{
                 Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
             }
         })
+    }
 
+    private fun addToFavorites(user: User) {
+        DataService.users.add(Followers(user.login, user.avatar_url))
+        Toast.makeText(context, "User added to your favorites", Toast.LENGTH_SHORT).show()
     }
 
 

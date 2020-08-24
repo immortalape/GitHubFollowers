@@ -10,7 +10,11 @@
         android:id="@+id/navigation_search_results"
         android:name="com.example.githubfollowers.ui.searchResults.SearchResultsFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_search_results" />
+        tools:layout="@layout/fragment_search_results" >
+        <action
+            android:id="@+id/action_navigation_search_results_to_navigation_notifications"
+            app:destination="@id/navigation_notifications" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favorites"
@@ -30,5 +34,13 @@
         <action
             android:id="@+id/action_get_followers_fragment_to_navigation_home"
             app:destination="@id/navigation_search_results" />
+    </fragment>
+    <fragment
+        android:id="@+id/favorites_empty_fragment"
+        android:name="com.example.githubfollowers.ui.favorites.FavoritesEmptyFragment"
+        android:label="FavoritesEmptyFragment" >
+        <action
+            android:id="@+id/action_favoritesEmptyFragment_to_navigation_favorites"
+            app:destination="@id/navigation_favorites" />
     </fragment>
 </navigation>

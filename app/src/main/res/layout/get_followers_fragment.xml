@@ -37,11 +37,12 @@
         android:id="@+id/get_followers_button"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="85dp"
         android:background="@drawable/rounded_corners"
+        android:shadowColor="@color/design_default_color_background"
         android:text="GET FOLLOWERS"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_user_edit_text" />

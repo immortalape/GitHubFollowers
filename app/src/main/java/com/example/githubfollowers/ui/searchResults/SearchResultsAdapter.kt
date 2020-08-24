@@ -59,6 +59,4 @@ class SearchResultsAdapter(
     interface ItemClicked {
         fun onItemClicked(followers: Followers)
     }
-
-
 }
