@@ -47,7 +47,7 @@ class SearchResultsFragment : Fragment(), SearchResultsAdapter.ItemClicked {
                     adapter.updateFollowersList(response)
                     Toast.makeText(context, "Successfully retrieved data!", Toast.LENGTH_SHORT).show()
                 }else{
-                    Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "User doesn't exist", Toast.LENGTH_SHORT).show()
                 }
             })
         }else{
