@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.githubfollowers.R
 import com.example.githubfollowers.model.Followers
 import com.example.githubfollowers.ui.profile.ProfileFragment
@@ -27,18 +25,23 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.ItemClicked {
     ): View? {
         favoritesViewModel =
                 ViewModelProviders.of(this).get(FavoritesViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_favorites, container, false)
+        return if (adapter.itemCount == 0){
+            inflater.inflate(R.layout.fragment_favorites_empty, container, false)
+        } else {
+            inflater.inflate(R.layout.fragment_favorites, container, false)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        favorites_recycler_view.layoutManager = LinearLayoutManager(context)
-        favorites_recycler_view.adapter = adapter
-
+        if (adapter.itemCount != 0){
+            favorites_recycler_view.layoutManager = GridLayoutManager(context, 2)
+            favorites_recycler_view.adapter = adapter
+        }
     }
 
-    override fun onItemClicked(followers: Followers) {
-        val profileFragment = ProfileFragment(followers.login)
+    override fun onItemClicked(favorites: Followers) {
+        val profileFragment = ProfileFragment(favorites.login)
         val fragmentTransaction = parentFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.nav_host_fragment, profileFragment)
         fragmentTransaction.addToBackStack(null)

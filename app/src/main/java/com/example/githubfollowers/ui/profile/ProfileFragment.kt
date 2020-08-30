@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -42,17 +41,31 @@ class ProfileFragment(private val login: String) : Fragment() {
             if (response!=null) {
                 bind(response)
                 profile_screen_add_to_favorites_button.setOnClickListener {
-                    addToFavorites(response)
+                        addToFavorites(response)
                 }
             }else{
                 Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
             }
         })
+
+//        profile_screen_get_followers_button.setOnClickListener {
+//            sharedViewModel.userName = login
+//            val searchResultsFragment = SearchResultsFragment()
+//            val fragmentTransaction = fragmentManager?.beginTransaction()
+//
+//            fragmentTransaction?.replace(R.id.nav_host_fragment, searchResultsFragment)
+//            fragmentTransaction?.addToBackStack(null)
+//            fragmentTransaction?.commit()
+//        }
     }
 
     private fun addToFavorites(user: User) {
-        DataService.users.add(Followers(user.login, user.avatar_url))
-        Toast.makeText(context, "User added to your favorites", Toast.LENGTH_SHORT).show()
+        if (Followers(user.login, user.avatar_url) in DataService.users){
+            Toast.makeText(context, "User already in favorites", Toast.LENGTH_SHORT).show()
+        }else{
+            DataService.users.add(Followers(user.login, user.avatar_url))
+            Toast.makeText(context, "User added to your favorites", Toast.LENGTH_SHORT).show()
+        }
     }
 
 

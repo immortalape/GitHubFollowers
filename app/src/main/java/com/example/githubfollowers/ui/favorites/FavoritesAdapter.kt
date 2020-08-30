@@ -1,6 +1,5 @@
 package com.example.githubfollowers.ui.favorites
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubfollowers.R
 import com.example.githubfollowers.model.Followers
-import com.example.githubfollowers.ui.searchResults.SearchResultsAdapter
-import com.example.githubfollowers.utils.DataService
 import com.squareup.picasso.Picasso
 
 class FavoritesAdapter(
@@ -21,7 +18,7 @@ class FavoritesAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.favorites_list, parent, false))
+        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.followers_list, parent, false))
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -36,20 +33,20 @@ class FavoritesAdapter(
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val favoritesImageView : ImageView = itemView.findViewById(R.id.favorites_image_view)
-        val favoritesUserName : TextView = itemView.findViewById(R.id.favorites_user_name_text_view)
+        private val favoritesImageView : ImageView = itemView.findViewById(R.id.userImageView)
+        private val favoritesUserName : TextView = itemView.findViewById(R.id.userNameTextView)
 
-        fun bind(followers: Followers){
-            favoritesUserName.text = followers.login
 
+        fun bind(favorites: Followers){
+            favoritesUserName.text = favorites.login
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                 favoritesImageView.clipToOutline = true
             }
-            Picasso.get().load(followers.avatar_url).into(favoritesImageView)
+            Picasso.get().load(favorites.avatar_url).into(favoritesImageView)
         }
     }
 
     interface ItemClicked {
-        fun onItemClicked(followers: Followers)
+        fun onItemClicked(favorites: Followers)
     }
 }
