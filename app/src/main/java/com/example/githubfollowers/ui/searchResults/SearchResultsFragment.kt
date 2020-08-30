@@ -18,7 +18,7 @@ import com.example.githubfollowers.ui.profile.ProfileFragment
 import kotlinx.android.synthetic.main.fragment_search_results.*
 
 
-class SearchResultsFragment : Fragment(), SearchResultsAdapter.ItemClicked {
+class SearchResultsFragment(private val userName : String) : Fragment(), SearchResultsAdapter.ItemClicked {
 
     private lateinit var sharedViewModel: SharedViewModel
     private var adapter = SearchResultsAdapter(this, mutableListOf(), this)
@@ -41,7 +41,7 @@ class SearchResultsFragment : Fragment(), SearchResultsAdapter.ItemClicked {
         homeScreenRecyclerView.adapter = adapter
 
         if (adapter.itemCount == 0) {
-            sharedViewModel.getFollowersData(sharedViewModel.userName).observe(viewLifecycleOwner, Observer<List<Followers>>
+            sharedViewModel.getFollowersData(userName).observe(viewLifecycleOwner, Observer<List<Followers>>
             { response ->
                 if(response!=null){
                     adapter.updateFollowersList(response)

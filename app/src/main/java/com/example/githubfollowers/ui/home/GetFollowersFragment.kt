@@ -5,17 +5,14 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.text.InputFilter
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
 import com.example.githubfollowers.R
 import com.example.githubfollowers.ui.searchResults.SearchResultsFragment
 import com.example.githubfollowers.ui.SharedViewModel
@@ -64,15 +61,14 @@ class GetFollowersFragment : Fragment() {
                 search_user_edit_text.text.clear()
             }
             else -> {
-                transition()
+                val userName = search_user_edit_text.text.toString()
+                transition(userName)
             }
         }
     }
 
-    private fun transition(){
-        viewModel.userName = search_user_edit_text.text.toString()
-
-        val searchResultsFragment = SearchResultsFragment()
+    private fun transition(userName : String){
+        val searchResultsFragment = SearchResultsFragment(userName)
         val fragmentTransaction = fragmentManager?.beginTransaction()
 
         fragmentTransaction?.replace(R.id.nav_host_fragment, searchResultsFragment)

@@ -20,13 +20,21 @@
         android:id="@+id/navigation_favorites"
         android:name="com.example.githubfollowers.ui.favorites.FavoritesFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_navigation_favorites_to_navigation_notifications"
+            app:destination="@id/navigation_notifications" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.githubfollowers.ui.profile.ProfileFragment"
         android:label="Favorites"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_notifications_to_navigation_favorites"
+            app:destination="@id/navigation_favorites" />
+    </fragment>
     <fragment
         android:id="@+id/get_followers_fragment"
         android:name="com.example.githubfollowers.ui.home.GetFollowersFragment"

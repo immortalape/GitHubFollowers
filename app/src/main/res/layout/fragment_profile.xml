@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rounded_corners_for_image_view">
+    android:background="@drawable/ic_android_mobile_">
 
     <Button
         android:id="@+id/profile_screen_add_to_favorites_button"

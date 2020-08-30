@@ -43,20 +43,20 @@ class ProfileFragment(private val login: String) : Fragment() {
                 profile_screen_add_to_favorites_button.setOnClickListener {
                         addToFavorites(response)
                 }
+                profile_screen_get_followers_button.setOnClickListener {
+                    val searchResultsFragment = SearchResultsFragment(response.login)
+                    val fragmentTransaction = fragmentManager?.beginTransaction()
+
+                    fragmentTransaction?.replace(R.id.nav_host_fragment, searchResultsFragment)
+                    fragmentTransaction?.addToBackStack(null)
+                    fragmentTransaction?.commit()
+                }
             }else{
                 Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
             }
         })
 
-        profile_screen_get_followers_button.setOnClickListener {
-            sharedViewModel.userName = login
-            val searchResultsFragment = SearchResultsFragment()
-            val fragmentTransaction = fragmentManager?.beginTransaction()
 
-            fragmentTransaction?.replace(R.id.nav_host_fragment, searchResultsFragment)
-            fragmentTransaction?.addToBackStack(null)
-            fragmentTransaction?.commit()
-        }
     }
 
     private fun addToFavorites(user: User) {

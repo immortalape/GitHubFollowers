@@ -7,9 +7,7 @@ import com.example.githubfollowers.model.Followers
 import com.example.githubfollowers.model.User
 
 class SharedViewModel : ViewModel() {
-
     private val repository = Repository
-    var userName = ""
 
     fun getFollowersData(user : String): LiveData<List<Followers>> {
         return repository.getFollowersData(user)

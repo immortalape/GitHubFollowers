@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@drawable/ic_android_mobile_">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -26,9 +26,9 @@
         android:background="@drawable/textbox"
         android:ems="10"
         android:gravity="center"
+        android:hint="Enter a username"
         android:imeOptions="actionSearch"
         android:inputType="textFilter"
-        android:hint="Enter a username"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/get_followers_button"
         app:layout_constraintStart_toStartOf="@+id/get_followers_button"
