@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.githubfollowers.R
 import com.example.githubfollowers.model.Followers
 import com.example.githubfollowers.model.User
@@ -18,10 +20,12 @@ import com.example.githubfollowers.ui.searchResults.SearchResultsFragment
 import com.example.githubfollowers.utils.DataService
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 
-class ProfileFragment(private val login: String) : Fragment() {
+class ProfileFragment : Fragment() {
 
     private lateinit var sharedViewModel: SharedViewModel
+    val args : ProfileFragmentArgs by navArgs()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -30,33 +34,25 @@ class ProfileFragment(private val login: String) : Fragment() {
     ): View? {
         sharedViewModel =
                 ViewModelProviders.of(this).get(SharedViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        val login = args.login
 
         sharedViewModel.getUserData(login).observe(viewLifecycleOwner, Observer<User>
         { response ->
             if (response!=null) {
                 bind(response)
-                profile_screen_add_to_favorites_button.setOnClickListener {
-                        addToFavorites(response)
+                view.profile_screen_add_to_favorites_button.setOnClickListener {
+                    addToFavorites(response)
                 }
-                profile_screen_get_followers_button.setOnClickListener {
-                    val searchResultsFragment = SearchResultsFragment(response.login)
-                    val fragmentTransaction = fragmentManager?.beginTransaction()
-
-                    fragmentTransaction?.replace(R.id.nav_host_fragment, searchResultsFragment)
-                    fragmentTransaction?.addToBackStack(null)
-                    fragmentTransaction?.commit()
+                view.profile_screen_get_followers_button.setOnClickListener {
+                    val action = ProfileFragmentDirections.navigateFromProfileToSearchResults("${response.login}")
+                    findNavController().navigate(action)
                 }
             }else{
                 Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
             }
         })
-
-
+        return view
     }
 
     private fun addToFavorites(user: User) {
@@ -79,6 +75,7 @@ class ProfileFragment(private val login: String) : Fragment() {
 
         profile_screen_username_text_view.text = user.login
         profile_screen_bio_text_view.text = user.bio
+        profile_screen_location_text_view.text = user.location
         profile_screen_public_gists_text_view.text = getString(R.string.public_gists, user.public_gists)
         profile_screen_public_repos_text_view.text = getString(R.string.public_repos, user.public_repos)
         profile_screen_followers_text_view.text = getString(R.string.followers, user.followers)

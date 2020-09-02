@@ -4,6 +4,7 @@ import com.example.githubfollowers.model.Followers
 import com.example.githubfollowers.model.User
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface GitHubApi {

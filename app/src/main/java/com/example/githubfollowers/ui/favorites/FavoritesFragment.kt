@@ -6,12 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.githubfollowers.R
 import com.example.githubfollowers.model.Followers
 import com.example.githubfollowers.ui.profile.ProfileFragment
 import com.example.githubfollowers.utils.DataService
 import kotlinx.android.synthetic.main.fragment_favorites.*
+import kotlinx.android.synthetic.main.fragment_favorites.view.*
 
 class FavoritesFragment : Fragment(), FavoritesAdapter.ItemClicked {
 
@@ -25,26 +28,20 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.ItemClicked {
     ): View? {
         favoritesViewModel =
                 ViewModelProviders.of(this).get(FavoritesViewModel::class.java)
-        return if (adapter.itemCount == 0){
-            inflater.inflate(R.layout.fragment_favorites_empty, container, false)
-        } else {
-            inflater.inflate(R.layout.fragment_favorites, container, false)
-        }
-    }
+        val emptyView = inflater.inflate(R.layout.fragment_favorites_empty, container, false)
+        val view = inflater.inflate(R.layout.fragment_favorites, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        if (adapter.itemCount != 0){
-            favorites_recycler_view.layoutManager = GridLayoutManager(context, 2)
-            favorites_recycler_view.adapter = adapter
+        return if (adapter.itemCount == 0){
+            emptyView
+        } else {
+            view.favorites_recycler_view.layoutManager = GridLayoutManager(context, 2)
+            view.favorites_recycler_view.adapter = adapter
+            view
         }
     }
 
     override fun onItemClicked(favorites: Followers) {
-        val profileFragment = ProfileFragment(favorites.login)
-        val fragmentTransaction = parentFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.nav_host_fragment, profileFragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+        val action = FavoritesFragmentDirections.navigateFromFavoritesToProfileFragment(favorites.login)
+        findNavController().navigate(action)
     }
 }

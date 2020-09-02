@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/get_followers_fragment"
+        android:id="@+id/navigation_get_followers"
         android:icon="@android:drawable/ic_search_category_default"
         android:title="Search" />
 

@@ -23,7 +23,7 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="177dp"
-        android:layout_height="112dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:gravity="center"
         android:text="No Favorites? Add on the follower screen"

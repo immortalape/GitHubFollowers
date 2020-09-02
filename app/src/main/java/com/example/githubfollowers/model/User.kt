@@ -4,6 +4,7 @@ data class User (
 	val avatar_url: String,
 	val login: String,
 	val email: String? = null,
+	val location: String,
 	val followers: Int,
 	val following: Int,
 	val followers_url: String,
