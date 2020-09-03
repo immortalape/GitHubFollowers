@@ -14,7 +14,8 @@
         <action
             android:id="@+id/navigate_to_search_results"
             app:destination="@id/navigation_search_results"
-            app:enterAnim="@anim/fragment_fade_enter" />
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
 
     <fragment
@@ -23,7 +24,9 @@
         tools:layout="@layout/fragment_search_results" >
         <action
             android:id="@+id/navigate_to_profile_fragment"
-            app:destination="@id/navigation_notifications" />
+            app:destination="@id/navigation_notifications"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
         <argument
             android:name="login"
             app:argType="string" />
@@ -36,7 +39,9 @@
         tools:layout="@layout/fragment_favorites" >
         <action
             android:id="@+id/navigate_from_favorites_to_profile_fragment"
-            app:destination="@id/navigation_notifications" />
+            app:destination="@id/navigation_notifications"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
 
     <fragment
@@ -46,7 +51,9 @@
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/navigate_from_profile_to_search_results"
-            app:destination="@id/navigation_search_results" />
+            app:destination="@id/navigation_search_results"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
         <argument
             android:name="login"
             app:argType="string" />

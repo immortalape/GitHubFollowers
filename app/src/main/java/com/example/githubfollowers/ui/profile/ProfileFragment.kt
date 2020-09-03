@@ -45,7 +45,9 @@ class ProfileFragment : Fragment() {
                     addToFavorites(response)
                 }
                 view.profile_screen_get_followers_button.setOnClickListener {
-                    val action = ProfileFragmentDirections.navigateFromProfileToSearchResults("${response.login}")
+                    val action = ProfileFragmentDirections.navigateFromProfileToSearchResults(
+                        response.login
+                    )
                     findNavController().navigate(action)
                 }
             }else{

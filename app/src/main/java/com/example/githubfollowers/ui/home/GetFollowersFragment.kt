@@ -1,16 +1,21 @@
 package com.example.githubfollowers.ui.home
 
 import android.content.Context
+import android.inputmethodservice.Keyboard
+import android.inputmethodservice.KeyboardView
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.text.InputType
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethod
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
@@ -61,8 +66,9 @@ class GetFollowersFragment : Fragment() {
             }
             else -> {
                 val userName = search_user_edit_text.text.toString()
-                val action = GetFollowersFragmentDirections.navigateToSearchResults("$userName")
+                val action = GetFollowersFragmentDirections.navigateToSearchResults(userName)
                 findNavController().navigate(action)
+                search_user_edit_text.text.clear()
             }
         }
     }

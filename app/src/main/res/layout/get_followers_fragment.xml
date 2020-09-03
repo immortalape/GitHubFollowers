@@ -39,7 +39,6 @@
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corners"
-        android:shadowColor="@color/design_default_color_background"
         android:text="GET FOLLOWERS"
         android:textColor="@android:color/white"
         android:textSize="18sp"

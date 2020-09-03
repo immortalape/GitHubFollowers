@@ -54,7 +54,7 @@ class SearchResultsFragment: Fragment(), SearchResultsAdapter.ItemClicked {
                             dialog.dismiss()
                         }
                         .setOnDismissListener {
-                            findNavController().navigate(R.id.navigation_get_followers)
+                            findNavController().navigateUp()
                         }
                         .create().show()
                 }
@@ -65,7 +65,7 @@ class SearchResultsFragment: Fragment(), SearchResultsAdapter.ItemClicked {
     }
 
     override fun onItemClicked(followers: Followers) {
-        val action = SearchResultsFragmentDirections.navigateToProfileFragment("${followers.login}")
+        val action = SearchResultsFragmentDirections.navigateToProfileFragment(followers.login)
         findNavController().navigate(action)
     }
 }
