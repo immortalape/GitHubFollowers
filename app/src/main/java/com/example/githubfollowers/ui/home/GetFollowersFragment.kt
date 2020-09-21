@@ -37,6 +37,7 @@ class GetFollowersFragment : Fragment() {
         view.search_user_edit_text.setOnEditorActionListener(TextView.OnEditorActionListener { v: TextView?, actionId: Int, event: KeyEvent? ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 getFollowersClicked()
+                hideKeyboardFrom(requireContext(), requireView())
             }
             return@OnEditorActionListener false
         })
@@ -65,7 +66,6 @@ class GetFollowersFragment : Fragment() {
                 val action = GetFollowersFragmentDirections.navigateToSearchResults(userName)
                 findNavController().navigate(action)
                 search_user_edit_text.text.clear()
-                hideKeyboardFrom(requireContext(), requireView())
             }
         }
     }
