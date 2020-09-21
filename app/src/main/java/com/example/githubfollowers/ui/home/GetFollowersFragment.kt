@@ -1,26 +1,22 @@
 package com.example.githubfollowers.ui.home
 
+import android.app.Activity
 import android.content.Context
-import android.inputmethodservice.Keyboard
-import android.inputmethodservice.KeyboardView
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.text.InputType
 import android.view.KeyEvent
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethod
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.githubfollowers.R
-import com.example.githubfollowers.ui.searchResults.SearchResultsFragment
 import com.example.githubfollowers.ui.SharedViewModel
 import kotlinx.android.synthetic.main.get_followers_fragment.*
 import kotlinx.android.synthetic.main.get_followers_fragment.view.*
@@ -38,8 +34,8 @@ class GetFollowersFragment : Fragment() {
         val view = inflater.inflate(R.layout.get_followers_fragment, container, false)
         viewModel = ViewModelProviders.of(requireActivity()).get(SharedViewModel::class.java)
 
-        view.search_user_edit_text.setOnEditorActionListener(TextView.OnEditorActionListener{v: TextView?, actionId: Int, event: KeyEvent? ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH){
+        view.search_user_edit_text.setOnEditorActionListener(TextView.OnEditorActionListener { v: TextView?, actionId: Int, event: KeyEvent? ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 getFollowersClicked()
             }
             return@OnEditorActionListener false
@@ -69,7 +65,13 @@ class GetFollowersFragment : Fragment() {
                 val action = GetFollowersFragmentDirections.navigateToSearchResults(userName)
                 findNavController().navigate(action)
                 search_user_edit_text.text.clear()
+                hideKeyboardFrom(requireContext(), requireView())
             }
         }
+    }
+
+    private fun hideKeyboardFrom(context: Context, view: View) {
+        val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

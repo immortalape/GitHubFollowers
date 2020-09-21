@@ -31,6 +31,10 @@ class SearchResultsAdapter(
         }
     }
 
+    fun updateFollowersList(followers: List<Followers>){
+        this.followers.addAll(followers)
+        notifyDataSetChanged()
+    }
 
     inner class ViewHolder (view : View) : RecyclerView.ViewHolder(view) {
 
@@ -50,11 +54,6 @@ class SearchResultsAdapter(
         }
     }
 
-
-    fun updateFollowersList(followers: List<Followers>){
-        this.followers.addAll(followers)
-        notifyDataSetChanged()
-    }
 
     interface ItemClicked {
         fun onItemClicked(followers: Followers)
